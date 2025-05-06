@@ -23,3 +23,25 @@ export const getAllStudents = async (req, res) => {
     });
   }
 };
+
+// my insertion trial ===============================================
+
+export const InsertStudents = async (req, res) => {
+
+  const {id, first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date,profile_picture}=req.body;
+  try {
+    const students = pool.query(`INSERT INTO students (id,first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date, profile_picture)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+      [id,first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date]);
+    res.status(200).json({
+      success: true,
+      count: students.rows,
+      data: students.rows,
+    });
+  } catch (err) {
+    logger.error(err.message);
+    res.status(500).json({
+      success: false,
+      message: `An unexpected error occurred in GET/STUDENTS, ${err?.message}`,
+    });
+  }
+};

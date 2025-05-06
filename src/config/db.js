@@ -39,6 +39,7 @@ const pool = new Pool({
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
+    
     await client.query(`
       INSERT INTO students (first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date)
       VALUES
@@ -46,6 +47,7 @@ const pool = new Pool({
         ('Jane', 'Smith', 'S12346', 'jane.smith@example.com', '2000-02-01', '0987654321', '2023-01-01')
       ON CONFLICT (student_id) DO NOTHING;
     `);
+
     logger.info("Database setup complete");
   } catch (err) {
     logger.error(`Database setup error: ${err.message}`);

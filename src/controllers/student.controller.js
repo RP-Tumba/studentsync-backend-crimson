@@ -23,3 +23,24 @@ export const getAllStudents = async (req, res) => {
     });
   }
 };
+
+export const deleteAnyStudent= async(req,res)=>{
+  const id=req.params.id;
+  try{
+    const student= await pool.query(`DELETE FROM students where id=${id}`)
+    res.status(200).json({
+      success:true,
+      count:student.rows.length,
+      data:student.rows
+    })
+
+  }
+  catch(error){
+    logger.error(error.message)
+    res.status(500).json({
+      success:false,
+      message:`Unexpected error occured on DELETE/STUDENT,${error?.message}`
+    })
+
+  }
+}

@@ -6,9 +6,11 @@
  */
 import express from "express";
 import { getAllStudents } from "../controllers/student.controller.js";
+import { deleteAnyStudent } from "../controllers/student.controller.js";
 
 const router = express.Router();
 
 router.get("/", getAllStudents);
+router.delete("/:id", deleteAnyStudent)
 
 export default router;

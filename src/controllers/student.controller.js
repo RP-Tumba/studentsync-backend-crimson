@@ -44,3 +44,27 @@ export const deleteAnyStudent= async(req,res)=>{
 
   }
 }
+
+export const updateStudent=async(req,res)=>{
+
+  const id=req.params.id;
+  const {first_name,last_name,student_id,email,date_of_birth,contact_number,enrollment_date,profile_picture,created_at,updated_at}=req.body;
+
+  try{
+    const result=await pool.query(`UPDATE students SET first_name='${first_name}',last_name='${last_name}',student_id='${student_id}',email='${email}',date_of_birth='${date_of_birth}',contact_number='${contact_number}',enrollment_date='${enrollment_date}',profile_picture='${profile_picture}',created_at='${created_at}',updated_at='${updated_at}' WHERE id=${id} `);
+    res.status(200).json({
+      success:true,
+      count:result.rows.length,
+      data:result.rows
+    })
+  }
+  catch(error){
+
+    logger.error(error.message)
+    res.status(500).json({
+      success:false,
+      message:`Unexpected error occured on UPDATE/STUDENT,${error?.message}`
+    });
+
+  }
+}

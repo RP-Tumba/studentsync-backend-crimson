@@ -45,29 +45,3 @@ export const fetchPaginatedStudent = async(req,res) => {
   }
 
 }
-
-export const inserting = async(req,res) => {
-  try{
-    let {id,first_name,last_name,student_id,email,
-      date_of_birth,
-      contact_number,
-      enrollment_date,
-      profile_picture,
-      created_at,
-      updated_at} = req.body
-    const students = await pool.query(`insert into students values ('${id}','${first_name}','${last_name}',
-      '${student_id}','${email}','${date_of_birth}','${contact_number}','${enrollment_date}','${profile_picture}',
-      '${created_at}','${updated_at}'
-      )`)
-    res.status(200).json({
-      success: true,
-    })
-  }catch (err) {
-    logger.error(err.message);
-    res.status(500).json({
-      success: false,
-      message: `An unexpected error occurred in GET/STUDENTS, ${err?.message}`,
-    });
-  }
-
-}

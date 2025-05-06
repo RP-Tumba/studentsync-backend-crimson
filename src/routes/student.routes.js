@@ -11,6 +11,5 @@ const router = express.Router();
 
 router.get("/", getAllStudents);
 router.get("/page/:number",fetchPaginatedStudent)
-router.get("/insert/",inserting)
 
 export default router;

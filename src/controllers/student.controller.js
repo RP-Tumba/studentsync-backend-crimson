@@ -34,8 +34,11 @@ export const InsertStudents = async (req, res) => {
     const exist = await pool.query(`SELECT * FROM students  WHERE student_id = $1 or email=$2`,[student_id,email]);
 
     if(exist.rows.length>0){
-
-      
+       
+       return res.status(409).json({
+        success:false,
+        message: 'Student with this ID already Exist.'
+       });
     }
 
     const students = pool.query(`INSERT INTO students (first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date)VALUES ($1,$2,$3,$4,$5,$6,$7)`,

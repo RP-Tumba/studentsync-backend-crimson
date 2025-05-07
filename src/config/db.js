@@ -13,22 +13,12 @@ const { Pool } = pkg;
 dotenv.config();
 
 // Create pool with SSL
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URI,
-//   ssl: true,
-//   connectionTimeoutMillis: 10000,
-// });
 const pool = new Pool({
-  host: "ep-rapid-morning-a4qe3gwr-pooler.us-east-1.aws.neon.tech",
-  port: 5432,
-  database: "student-sync",
-  user: "student-sync_owner",
-  password: "npg_dPktHrTSA5p6",
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  connectionString: process.env.DATABASE_URI,
+  ssl: true,
   connectionTimeoutMillis: 10000,
 });
+
 
 // Setup database and create table if it doesn't exist
 (async function () {

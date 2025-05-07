@@ -1,9 +1,3 @@
-/**
- * This file contains the controller functions related to student operations.
- * Currently, it includes a function to retrieve all students from the database.
- *
- * Add more functions here to handle other student-related operations (e.g., create, update, delete).
- */
 import pool from "../config/db.js";
 import { logger } from "../utils/index.js";
 
@@ -27,7 +21,7 @@ export const getAllStudents = async (req, res) => {
 export const fetchPaginatedStudent = async(req,res) => {
   try{
     let frontNumber = req.params.number;
-    let numberToReturn = 3
+    let numberToReturn = 5
     let numberToBeFetched = frontNumber*numberToReturn;
     console.log(frontNumber,numberToBeFetched)
     const students = await pool.query(`SELECT * FROM students limit ${numberToReturn} offset ${numberToBeFetched}`)

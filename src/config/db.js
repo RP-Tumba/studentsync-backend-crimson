@@ -19,6 +19,7 @@ const pool = new Pool({
   connectionTimeoutMillis: 10000,
 });
 
+
 // Setup database and create table if it doesn't exist
 (async function () {
   const client = await pool.connect();

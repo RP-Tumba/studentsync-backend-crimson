@@ -6,9 +6,13 @@
  */
 import express from "express";
 import { getAllStudents } from "../controllers/student.controller.js";
+import { getUserById } from "../controllers/student.controller.js";
+
 
 const router = express.Router();
 
 router.get("/", getAllStudents);
+router.get("/:id", getUserById);
+
 
 export default router;

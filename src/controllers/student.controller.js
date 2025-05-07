@@ -31,13 +31,13 @@ export const InsertStudents = async (req, res) => {
   const {first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date}=req.body;
   try {
     
-    const exist = await pool.query(`SELECT * FROM students  WHERE student_id = $1 or email=$2`,[student_id,email]);
+    const exist = await pool.query(`SELECT * FROM students  WHERE student_id = $1 or email=$2 or contact_number=$3`,[student_id, email, contact_number]);
 
     if(exist.rows.length>0){
        
        return res.status(409).json({
         success:false,
-        message: 'Student with this ID already Exist.'
+        message: `Student with this StudentID:${student_id} , Email:${email} && Phone_Number${contact_number} already Exist.`
        });
     }
 

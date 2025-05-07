@@ -24,12 +24,20 @@ export const getAllStudents = async (req, res) => {
   }
 };
 
-// my insertion trial ===============================================
+// My insertion trial ===============================================
 
 export const InsertStudents = async (req, res) => {
 
   const {first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date}=req.body;
   try {
+    
+    const exist = await pool.query(`SELECT * FROM students  WHERE student_id = $1 or email=$2`,[student_id,email]);
+
+    if(exist.rows.length>0){
+
+      
+    }
+
     const students = pool.query(`INSERT INTO students (first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date)VALUES ($1,$2,$3,$4,$5,$6,$7)`,
       [first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date]);
     res.status(200).json({
@@ -37,6 +45,8 @@ export const InsertStudents = async (req, res) => {
       count: students.rows,
       data: students.rows,
     });
+
+
   } catch (err) {
     logger.error(err.message);
     res.status(500).json({

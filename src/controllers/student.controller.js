@@ -10,6 +10,7 @@ import pool from "../config/db.js";
 import { logger } from "../utils/index.js";
 
 export const getAllStudents = async (req, res) => {
+  console.log(req.url)
   try {
     const students = await pool.query("SELECT * FROM students");
     res.status(200).json({
@@ -28,6 +29,7 @@ export const getAllStudents = async (req, res) => {
 
 
 export const getstudentbyID = async (req, res) => {
+  console.log(req.url)
   try {
 
     const id = req.params.id

@@ -24,7 +24,7 @@ export const getAllStudents = async (req, res) => {
   }
 };
 
-// My insertion trial ===============================================
+
 
 export const InsertStudents = async (req, res) => {
 

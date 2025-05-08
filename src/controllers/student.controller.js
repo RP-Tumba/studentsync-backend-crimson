@@ -33,20 +33,27 @@ export const getUserById = async (req, res) => {
   const params = [];
 
 // lets find with id this below process to do it
+
  if(id){ getsql += 'AND id = $' +(params.length + 1); params.push(id);}
  
  // lets find with first_name this below process to do it
+
  if(first_name)
   {
      getsql += 'AND first_name  ILIKE $' +(params.length + 1);
+
      // beacause of case sensitive
+
      params.push(`%${first_name}%`);}
 
  // lets find with last_name this below process to do it    
+
  if(last_name)
   {
      getsql += 'AND last_name  ILIKE $' +(params.length + 1);
+
      // beacause of case sensitive
+     
      params.push(`%${last_name}%`);}
 
   try {

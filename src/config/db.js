@@ -16,7 +16,7 @@ dotenv.config();
 const pool = new Pool({
   connectionString: process.env.DATABASE_URI,
   ssl: true,
-  connectionTimeoutMillis: 10000,
+  connectionTimeoutMillis: 20000,
 });
 
 // Setup database and create table if it doesn't exist

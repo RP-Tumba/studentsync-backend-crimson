@@ -10,6 +10,7 @@ import { getAllStudents, InsertStudents } from "../controllers/student.controlle
 import { getUserById } from "../controllers/student.controller.js";
 import { getstudentbyID } from "../controllers/student.controller.js";
 import { deleteAnyStudent } from "../controllers/student.controller.js";
+import { updateStudent } from "../controllers/student.controller.js";
 
 const router = express.Router();
 
@@ -19,7 +20,8 @@ router.get("/", getAllStudents);
 router.get("/page/:number",fetchPaginatedStudent);
 router.post("/Insert-Student", InsertStudents);
 router.get("/specificid/:id", getstudentbyID);
-router.get("/:id", getUserById);
+router.get("/:d", getUserById);
+router.put("/:id", updateStudent);
 
 export default router;
 

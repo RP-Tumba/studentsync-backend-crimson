@@ -65,7 +65,7 @@ export const InsertStudents = async (req, res) => {
        });
     }
 
-    const students = await pool.query(`INSERT INTO students (first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date)VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNIG*`,
+    const students = await pool.query(`INSERT INTO students (first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date)VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING*`,
       [first_name, last_name, student_id, email, date_of_birth, contact_number, enrollment_date]);
     res.status(200).json({
       success: true,

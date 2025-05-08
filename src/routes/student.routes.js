@@ -5,17 +5,18 @@
  * Add more routes for creating, updating, and deleting students as needed.
  */
 import express from "express";
+
 import { fetchPaginatedStudent } from "../controllers/student.controller.js";
 import { getAllStudents, InsertStudents } from "../controllers/student.controller.js";
 import { getUserById } from "../controllers/student.controller.js";
 import { getstudentbyID } from "../controllers/student.controller.js";
 import { deleteAnyStudent } from "../controllers/student.controller.js";
 import { updateStudent } from "../controllers/student.controller.js";
+import { getAllStudents } from "../controllers/student.controller.js";
+
 
 const router = express.Router();
 
-router.get("/fetch", getAllStudents);
-router.delete("/delete/:id", deleteAnyStudent);
 router.get("/", getAllStudents);
 router.get("/page/:number",fetchPaginatedStudent);
 router.post("/Insert-Student", InsertStudents);
@@ -24,4 +25,3 @@ router.get("/:d", getUserById);
 router.put("/:id", updateStudent);
 
 export default router;
-

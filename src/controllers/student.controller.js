@@ -4,8 +4,6 @@
  *
  * Add more functions here to handle other student-related operations (e.g., create, update, delete).
  */
-
-
 import pool from "../config/db.js";
 import { logger } from "../utils/index.js";
 

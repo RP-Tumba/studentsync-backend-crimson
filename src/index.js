@@ -9,7 +9,9 @@ import { errorResponse, logger } from "./utils/index.js";
 const app = express();
 dotenv.config();
 
+
 const PORT = process.env.PORT || 5000;
+
 
 // middlewares
 app.use(cors());

@@ -13,13 +13,15 @@ const { Pool } = pkg;
 dotenv.config();
 
 // Create pool with SSL
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URI,
   ssl: true,
-  connectionTimeoutMillis: 10000,
+  connectionTimeoutMillis: 20000,
 });
 
 // Setup database and create table if it doesn't exist
+
 (async function () {
   const client = await pool.connect();
   try {
